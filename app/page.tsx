@@ -61,7 +61,7 @@ export default function Home() {
       </header>
 
       <section className="hero shell" id="top">
-        <div className="eyebrow-row"><p>AI PRODUCT MANAGER · RESEARCHER · BUILDER</p><p>BASED IN SHENZHEN / GUANGZHOU</p></div>
+        <div className="eyebrow-row"><p>AI PRODUCT MANAGER · RESEARCHER · BUILDER</p></div>
         <h1>Building products<br />at the edge of <em>AI.</em></h1>
         <div className="hero-footer">
           <p className="intro">I&apos;m Nicole — a product thinker turning emerging AI capabilities into clear, useful experiences for the real world.</p>

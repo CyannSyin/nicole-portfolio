@@ -157,7 +157,7 @@ button,a { -webkit-tap-highlight-color:transparent; }
 
 @media (max-width:900px) {
   .shell { width:min(100% - 36px,1440px); }.site-header { grid-template-columns:1fr auto; }.site-header nav { display:none; }.availability { font-size:9px; }
-  .hero { min-height:820px; padding-top:35px; }.eyebrow-row p:last-child { display:none; }.hero h1 { margin-top:16vh; font-size:clamp(60px,13vw,108px); line-height:.94; }
+  .hero { min-height:820px; padding-top:35px; }.hero h1 { margin-top:16vh; font-size:clamp(60px,13vw,108px); line-height:.94; }
   .hero-footer { margin-top:12vh; }.intro { width:70%; }.hero-orbit { right:-35%; top:18%; }
   .about-copy,.section-title-row,.chapter-intro,.skills-intro { grid-template-columns:1fr; }.about-copy { gap:45px; }.body-large { grid-column:1; margin-top:10px; }.experience-list { margin-left:0; }
   .section-title-row { align-items:start; }.section-title-row p { max-width:500px; }.project-grid { gap-block:75px; }
