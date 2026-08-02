@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import styles from "./islecho.module.css";
 
 const repositoryUrl = "https://github.com/CyannSyin/Islecho";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const withBasePath = (path: string) => `${basePath}${path}`;
 
 export const metadata: Metadata = {
   title: "Islecho — Nicole",
   description:
     "A low-pressure social product where one daily thought can drift to a stranger and return as a small, kind echo.",
 };
+
+export const dynamic = "force-static";
 
 const principles = [
   {
@@ -47,7 +51,7 @@ export default function IslechoCaseStudy() {
   return (
     <main className={styles.page} id="top">
       <header className={styles.header}>
-        <a href="/">← Back to portfolio</a>
+        <a href={withBasePath("/")}>← Back to portfolio</a>
         <span>ISLECHO · CASE STUDY</span>
         <a href={repositoryUrl} target="_blank" rel="noreferrer">View source ↗</a>
       </header>
@@ -60,7 +64,7 @@ export default function IslechoCaseStudy() {
           <p>A quiet digital archipelago where people leave one daily thought, drift to a stranger&apos;s island, and respond without the pressure of a public identity.</p>
         </div>
         <div className={styles.heroArtwork}>
-          <img src="/islecho/welcome-hero.webp" alt="A quiet archipelago at dusk with a small illuminated island and lighthouse" />
+          <img src={withBasePath("/islecho/welcome-hero.webp")} alt="A quiet archipelago at dusk with a small illuminated island and lighthouse" />
           <span>AN ARCHIPELAGO OF SMALL HUMAN MOMENTS</span>
         </div>
         <dl className={styles.projectMeta}>
@@ -72,7 +76,7 @@ export default function IslechoCaseStudy() {
       </section>
 
       <section className={styles.panorama}>
-        <img src="/islecho/drift-panorama.webp" alt="A calm ocean panorama at dusk" />
+        <img src={withBasePath("/islecho/drift-panorama.webp")} alt="A calm ocean panorama at dusk" />
         <div><span>FIG. 01 / THE PRODUCT WORLD</span><p>The ocean is not decoration—it turns navigation into a slower, more intentional transition between self and stranger.</p></div>
       </section>
 
@@ -123,7 +127,7 @@ export default function IslechoCaseStudy() {
               <div className={styles.islandScreen}>
                 <div className={styles.phoneNav}>‹ <span>陌生岛</span></div>
                 <h3>月见岛</h3><p>☾ 月光</p>
-                <img src="/islecho/moon-island.webp" alt="Moon View Island with a lighthouse" />
+                <img src={withBasePath("/islecho/moon-island.webp")} alt="Moon View Island with a lighthouse" />
                 <div className={styles.messageCard}><small>一段被洋流带来的岛语</small><p>晚上抬头看见月亮的时候，突然觉得自己没有那么孤单。</p></div>
                 <button>送出回响</button>
               </div>
@@ -156,8 +160,8 @@ export default function IslechoCaseStudy() {
             <p>The vertical capture follows the native experience from entering the archipelago to leaving a thought, drifting, and returning to a personal memory.</p>
           </div>
           <div className={styles.demoPhone}>
-            <video controls playsInline preload="metadata" poster="/islecho/welcome-home.png" aria-label="Islecho end-to-end iPhone prototype demonstration">
-              <source src="/islecho/islecho-demo.m4v?v=20260802-231456" type="video/mp4" />
+            <video controls playsInline preload="metadata" poster={withBasePath("/islecho/welcome-home.png")} aria-label="Islecho end-to-end iPhone prototype demonstration">
+              <source src={withBasePath("/islecho/islecho-demo.m4v?v=20260802-231456")} type="video/mp4" />
               Your browser does not support embedded video.
             </video>
           </div>
@@ -168,10 +172,10 @@ export default function IslechoCaseStudy() {
         <div className={styles.sectionLabel}><span>05</span><p>THE PRODUCT WORLD</p></div>
         <div className={styles.worldIntro}><h2>Different islands.<br />The same quiet <em>ocean.</em></h2><p>A consistent illustrated system gives every anonymous destination a distinct identity without turning it into a user profile.</p></div>
         <div className={styles.islandGrid}>
-          <figure><img src="/islecho/my-island.webp" alt="Nicole's home island with a house and lighthouse" /><figcaption><span>MY ISLAND</span><p>A private home for today&apos;s thought and remembered echoes.</p></figcaption></figure>
-          <figure><img src="/islecho/mist-island.webp" alt="Mist Sleep Island" /><figcaption><span>雾眠岛 · MIST</span><p>A softer, enclosed shore for uncertain thoughts.</p></figcaption></figure>
-          <figure><img src="/islecho/wind-island.webp" alt="Wind Rest Island" /><figcaption><span>风栖岛 · BREEZE</span><p>A small destination shaped by weather and atmosphere.</p></figcaption></figure>
-          <figure><img src="/islecho/star-island.webp" alt="Star Islet" /><figcaption><span>星屿 · CLEAR NIGHT</span><p>Visual identity without biography, followers, or status.</p></figcaption></figure>
+          <figure><img src={withBasePath("/islecho/my-island.webp")} alt="Nicole's home island with a house and lighthouse" /><figcaption><span>MY ISLAND</span><p>A private home for today&apos;s thought and remembered echoes.</p></figcaption></figure>
+          <figure><img src={withBasePath("/islecho/mist-island.webp")} alt="Mist Sleep Island" /><figcaption><span>雾眠岛 · MIST</span><p>A softer, enclosed shore for uncertain thoughts.</p></figcaption></figure>
+          <figure><img src={withBasePath("/islecho/wind-island.webp")} alt="Wind Rest Island" /><figcaption><span>风栖岛 · BREEZE</span><p>A small destination shaped by weather and atmosphere.</p></figcaption></figure>
+          <figure><img src={withBasePath("/islecho/star-island.webp")} alt="Star Islet" /><figcaption><span>星屿 · CLEAR NIGHT</span><p>Visual identity without biography, followers, or status.</p></figcaption></figure>
         </div>
       </section>
 
@@ -195,15 +199,15 @@ export default function IslechoCaseStudy() {
         <div className={styles.galleryIntro}><h2>Three moments.<br />One quiet <em>rhythm.</em></h2><p>The final iPhone captures connect the illustrated world to the daily product loop: arrive, leave something behind, then return to what the island remembers.</p></div>
         <div className={styles.galleryGrid}>
           <figure className={styles.galleryCard}>
-            <div className={styles.galleryCanvas}><img src="/islecho/welcome-home.png" alt="Islecho welcome screen showing a lighthouse island at dusk" /></div>
+            <div className={styles.galleryCanvas}><img src={withBasePath("/islecho/welcome-home.png")} alt="Islecho welcome screen showing a lighthouse island at dusk" /></div>
             <figcaption><span>01 / ARRIVE</span><p>Enter a calm product world before any social action is requested.</p></figcaption>
           </figure>
           <figure className={styles.galleryCard}>
-            <div className={styles.galleryCanvas}><img src="/islecho/write-drift.png" alt="Islecho daily writing screen with mood selection and a short thought" /></div>
+            <div className={styles.galleryCanvas}><img src={withBasePath("/islecho/write-drift.png")} alt="Islecho daily writing screen with mood selection and a short thought" /></div>
             <figcaption><span>02 / LEAVE A THOUGHT</span><p>Mood and a 200-character boundary make daily expression feel finite.</p></figcaption>
           </figure>
           <figure className={styles.galleryCard}>
-            <div className={styles.galleryCanvas}><img src="/islecho/echo-memory.png" alt="Islecho island memory screen with daily entries, moods, and echoes" /></div>
+            <div className={styles.galleryCanvas}><img src={withBasePath("/islecho/echo-memory.png")} alt="Islecho island memory screen with daily entries, moods, and echoes" /></div>
             <figcaption><span>03 / REMEMBER</span><p>Entries and echoes settle into a private archive instead of a feed.</p></figcaption>
           </figure>
         </div>
@@ -219,7 +223,7 @@ export default function IslechoCaseStudy() {
         <a href={repositoryUrl} target="_blank" rel="noreferrer">Explore the repository ↗</a>
       </section>
 
-      <footer className={styles.footer}><a href="/">← Portfolio</a><span>ISLECHO · 2026</span><a href="#top">Back to top ↑</a></footer>
+      <footer className={styles.footer}><a href={withBasePath("/")}>← Portfolio</a><span>ISLECHO · 2026</span><a href="#top">Back to top ↑</a></footer>
     </main>
   );
 }

@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import styles from "./promptpin.module.css";
 
 const repositoryUrl = "https://github.com/CyannSyin/PromptPin";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const withBasePath = (path: string) => `${basePath}${path}`;
 
 export const metadata: Metadata = {
   title: "PromptPin — Nicole",
   description:
     "An independently designed and built macOS menu bar app that keeps reusable prompts ordered and one click away.",
 };
+
+export const dynamic = "force-static";
 
 const principles = [
   {
@@ -43,7 +47,7 @@ function MenuBarMockup() {
       </div>
       <div className={styles.popover}>
         <div className={styles.popoverHeading}>
-          <img src="/promptpin/promptpin-icon.png" alt="" />
+          <img src={withBasePath("/promptpin/promptpin-icon.png")} alt="" />
           <div><strong>PromptPin</strong><span>Your prompts, one click away.</span></div>
         </div>
         <label>SEARCH PROJECTS</label>
@@ -87,7 +91,7 @@ export default function PromptPinCaseStudy() {
   return (
     <main className={styles.page} id="top">
       <header className={styles.header}>
-        <a href="/">← Back to portfolio</a>
+        <a href={withBasePath("/")}>← Back to portfolio</a>
         <span>PROMPTPIN · CASE STUDY</span>
         <a href={repositoryUrl} target="_blank" rel="noreferrer">View source ↗</a>
       </header>
@@ -95,7 +99,7 @@ export default function PromptPinCaseStudy() {
       <section className={styles.hero}>
         <div className={styles.heroLabel}><span>MACOS · AI WORKFLOW · INDEPENDENT BUILD</span><span>V0.1.2</span></div>
         <div className={styles.titleRow}>
-          <img src="/promptpin/promptpin-icon.png" alt="PromptPin app icon" />
+          <img src={withBasePath("/promptpin/promptpin-icon.png")} alt="PromptPin app icon" />
           <h1>Prompt<br />Pin</h1>
         </div>
         <div className={styles.heroBottom}>
@@ -168,8 +172,8 @@ export default function PromptPinCaseStudy() {
         </div>
         <figure className={styles.demoMedia}>
           <div className={styles.demoFrame}>
-            <video controls playsInline preload="metadata" poster="/promptpin/manage-window.png">
-              <source src="/promptpin/promptpin-demo.mp4" type="video/mp4" />
+            <video controls playsInline preload="metadata" poster={withBasePath("/promptpin/manage-window.png")}>
+              <source src={withBasePath("/promptpin/promptpin-demo.mp4")} type="video/mp4" />
               Your browser does not support embedded video.
             </video>
           </div>
@@ -203,13 +207,13 @@ export default function PromptPinCaseStudy() {
         <div className={styles.galleryGrid}>
           <figure className={`${styles.galleryCard} ${styles.galleryPortrait}`}>
             <div className={styles.galleryCanvas}>
-              <img src="/promptpin/menu-bar.png" alt="PromptPin menu bar popover listing three prompt projects" />
+              <img src={withBasePath("/promptpin/menu-bar.png")} alt="PromptPin menu bar popover listing three prompt projects" />
             </div>
             <figcaption><span>01 / QUICK ACCESS</span><p>Prompt projects remain one click away without taking over the desktop.</p></figcaption>
           </figure>
           <figure className={`${styles.galleryCard} ${styles.galleryLandscape}`}>
             <div className={styles.galleryCanvas}>
-              <img src="/promptpin/manage-window.png" alt="PromptPin settings window showing projects and an ordered prompt" />
+              <img src={withBasePath("/promptpin/manage-window.png")} alt="PromptPin settings window showing projects and an ordered prompt" />
             </div>
             <figcaption><span>02 / MANAGE</span><p>The full workspace separates deliberate prompt setup from everyday retrieval.</p></figcaption>
           </figure>
@@ -223,14 +227,14 @@ export default function PromptPinCaseStudy() {
       </section>
 
       <section className={styles.sourceCta}>
-        <img src="/promptpin/promptpin-icon.png" alt="" />
+        <img src={withBasePath("/promptpin/promptpin-icon.png")} alt="" />
         <span>OPEN-SOURCE MACOS APP</span>
         <h2>PromptPin</h2>
         <p>Swift · SwiftUI · AppKit · Local JSON persistence</p>
         <a href={repositoryUrl} target="_blank" rel="noreferrer">Explore the repository ↗</a>
       </section>
 
-      <footer className={styles.footer}><a href="/">← Portfolio</a><span>PROMPTPIN · 2026</span><a href="#top">Back to top ↑</a></footer>
+      <footer className={styles.footer}><a href={withBasePath("/")}>← Portfolio</a><span>PROMPTPIN · 2026</span><a href="#top">Back to top ↑</a></footer>
     </main>
   );
 }

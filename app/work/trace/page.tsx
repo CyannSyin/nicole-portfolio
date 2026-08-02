@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import styles from "./trace.module.css";
 
 const paperUrl = "https://dl.acm.org/doi/10.1145/3772363.3798905";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const withBasePath = (path: string) => `${basePath}${path}`;
 
 export const metadata: Metadata = {
   title: "TRACE — Nicole",
   description:
     "A human-AI writing system that helps long-form authors maintain narrative consistency without giving up creative control.",
 };
+
+export const dynamic = "force-static";
 
 const researchSignals = [
   { value: "2,850", label: "community threads analyzed" },
@@ -37,7 +41,7 @@ export default function TraceCaseStudy() {
   return (
     <main className={styles.page} id="top">
       <header className={styles.header}>
-        <a href="/" className={styles.back}>← Back to portfolio</a>
+        <a href={withBasePath("/")} className={styles.back}>← Back to portfolio</a>
         <span>TRACE · CASE STUDY</span>
         <a href={paperUrl} target="_blank" rel="noreferrer">Read the paper ↗</a>
       </header>
@@ -65,7 +69,7 @@ export default function TraceCaseStudy() {
 
       <section className={styles.heroMedia}>
         <figure className={styles.teaserFigure}>
-          <img src="/trace/trace-hero.png" alt="Comparison between a fragmented general writing workflow and the TRACE-assisted writing workflow" />
+          <img src={withBasePath("/trace/trace-hero.png")} alt="Comparison between a fragmented general writing workflow and the TRACE-assisted writing workflow" />
           <figcaption>From fragmented memory and late conflict discovery to an integrated, author-controlled writing workflow.</figcaption>
         </figure>
       </section>
@@ -133,7 +137,7 @@ export default function TraceCaseStudy() {
           </p>
         </div>
         <figure className={styles.productFigure}>
-          <img src="/trace/trace-ui-overview-web.jpg" alt="Annotated overview of the TRACE interface, character cards, and conflict detection interactions" />
+          <img src={withBasePath("/trace/trace-ui-overview-web.jpg")} alt="Annotated overview of the TRACE interface, character cards, and conflict detection interactions" />
           <figcaption><span>FIG. 02 / PRODUCT DESIGN OVERVIEW</span><p>The three-column workspace keeps chapter navigation, writing, narrative memory, and conflict resolution in one continuous surface.</p></figcaption>
         </figure>
         <div className={styles.featurePair}>
@@ -154,7 +158,7 @@ export default function TraceCaseStudy() {
         <div className={styles.sectionLabel}><span>04</span><p>THE WORKFLOW</p></div>
         <h2>Write · Audit · Correct</h2>
         <figure className={styles.processFigure}>
-          <img src="/trace/trace-process-web.jpg" alt="Detailed human-in-the-loop TRACE workflow across writing, auditing, and correction" />
+          <img src={withBasePath("/trace/trace-process-web.jpg")} alt="Detailed human-in-the-loop TRACE workflow across writing, auditing, and correction" />
           <figcaption>
             <span>FIG. 03 / HUMAN-IN-THE-LOOP WORKFLOW</span>
             <p>Authors write and save normally; the system extracts or merges character facts, retrieves relevant memory during an audit, and returns evidence-linked conflicts for human review and revision.</p>
@@ -193,7 +197,7 @@ export default function TraceCaseStudy() {
       </section>
 
       <footer className={styles.footer}>
-        <a href="/">← Portfolio</a><span>TRACE · 2025</span><a href="#top">Back to top ↑</a>
+        <a href={withBasePath("/")}>← Portfolio</a><span>TRACE · 2025</span><a href="#top">Back to top ↑</a>
       </footer>
     </main>
   );

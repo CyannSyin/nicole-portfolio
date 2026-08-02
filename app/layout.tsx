@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { headers } from "next/headers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,33 +12,32 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("host") ?? "localhost:3000";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? "http";
-  const baseUrl = new URL(`${protocol}://${host}`);
-  const description =
-    "Building products at the edge of AI. Selected work in AI agents, human-AI interaction, and product strategy.";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const siteUrl = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000/");
+const description =
+  "Building products at the edge of AI. Selected work in AI agents, human-AI interaction, and product strategy.";
+const socialImage = new URL(`${basePath}/og.png`, siteUrl).toString();
 
-  return {
-    metadataBase: baseUrl,
+export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  metadataBase: siteUrl,
+  title: "Nicole — AI Product Manager",
+  description,
+  icons: { icon: `${basePath}/favicon.svg`, shortcut: `${basePath}/favicon.svg` },
+  openGraph: {
     title: "Nicole — AI Product Manager",
     description,
-    icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
-    openGraph: {
-      title: "Nicole — AI Product Manager",
-      description,
-      type: "website",
-      images: [{ url: new URL("/og.png", baseUrl).toString(), width: 1200, height: 630, alt: "Building products at the edge of AI." }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Nicole — AI Product Manager",
-      description,
-      images: [new URL("/og.png", baseUrl).toString()],
-    },
-  };
-}
+    type: "website",
+    images: [{ url: socialImage, width: 1200, height: 630, alt: "Building products at the edge of AI." }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nicole — AI Product Manager",
+    description,
+    images: [socialImage],
+  },
+};
 
 export default function RootLayout({
   children,

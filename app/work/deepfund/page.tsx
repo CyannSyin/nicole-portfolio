@@ -3,12 +3,16 @@ import styles from "./deepfund.module.css";
 
 const repositoryUrl = "https://github.com/HKUSTDial/DeepFund";
 const paperUrl = "https://neurips.cc/virtual/2025/poster/121642";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const withBasePath = (path: string) => `${basePath}${path}`;
 
 export const metadata: Metadata = {
   title: "DeepFund — Nicole",
   description:
     "A live, leakage-resistant benchmark for evaluating LLM fund managers in real market conditions.",
 };
+
+export const dynamic = "force-static";
 
 const analysts = [
   { name: "Technical", input: "Price · volume · volatility", signal: "BEARISH" },
@@ -42,7 +46,7 @@ export default function DeepFundCaseStudy() {
   return (
     <main className={styles.page} id="top">
       <header className={styles.header}>
-        <a href="/">← Back to portfolio</a>
+        <a href={withBasePath("/")}>← Back to portfolio</a>
         <span>DEEPFUND · CASE STUDY</span>
         <a href={paperUrl} target="_blank" rel="noreferrer">Read the paper ↗</a>
       </header>
@@ -107,7 +111,7 @@ export default function DeepFundCaseStudy() {
         <div className={styles.sectionLabel}><span>02</span><p>THE EVALUATION SYSTEM</p></div>
         <div className={styles.splitIntro}><h2>One market.<br />One workflow.<br /><em>Any LLM.</em></h2><p>The benchmark isolates the model as the variable. A modular data environment and standardized multi-agent workflow stay consistent across providers.</p></div>
         <figure className={styles.frameworkFigure}>
-          <img src="/deepfund/framework.webp" alt="DeepFund architecture connecting a live environment, multi-agent workflow, and selectable LLM backend" />
+          <img src={withBasePath("/deepfund/framework.webp")} alt="DeepFund architecture connecting a live environment, multi-agent workflow, and selectable LLM backend" />
           <figcaption><span>FIG. 02 / DEEPFUND FRAMEWORK</span><p>Live fund state, trading history, and market data feed a planner–analyst–manager pipeline powered by a single selected LLM.</p></figcaption>
         </figure>
       </section>
@@ -144,7 +148,7 @@ export default function DeepFundCaseStudy() {
         <div className={styles.resultsInner}>
           <div className={styles.sectionLabel}><span>05</span><p>WHAT THE LIVE MARKET REVEALED</p></div>
           <div className={styles.resultsHeadline}><strong>1 / 9</strong><h2>Only one model finished the evaluation period with a positive return.</h2></div>
-          <figure className={styles.resultsFigure}><img src="/deepfund/results.webp" alt="DeepFund portfolio asset curves and performance table for nine evaluated LLMs" /><figcaption><span>FIG. 03 / LIVE PERFORMANCE</span><p>Grok 3 mini Beta returned +1.1%; the other eight models finished negative. Results are specific to the March–April 2025 window and do not imply future investment performance.</p></figcaption></figure>
+          <figure className={styles.resultsFigure}><img src={withBasePath("/deepfund/results.webp")} alt="DeepFund portfolio asset curves and performance table for nine evaluated LLMs" /><figcaption><span>FIG. 03 / LIVE PERFORMANCE</span><p>Grok 3 mini Beta returned +1.1%; the other eight models finished negative. Results are specific to the March–April 2025 window and do not imply future investment performance.</p></figcaption></figure>
           <div className={styles.resultStats}>
             <div><strong>96%</strong><span>valid analyst signals</span><p>4,144 of 4,320 signals included usable structured output and justification.</p></div>
             <div><strong>98%</strong><span>valid trading decisions</span><p>1,059 of 1,080 decisions successfully completed the end-to-end pipeline.</p></div>
@@ -167,7 +171,7 @@ export default function DeepFundCaseStudy() {
         <div className={styles.productizationInner}>
           <div className={`${styles.sectionLabel} ${styles.lightLabel}`}><span>07</span><p>FROM BENCHMARK TO PRODUCT</p></div>
           <div className={styles.productizationIntro}><h2>Make model behavior<br />legible to more than <em>researchers.</em></h2><p>The arena metaphor turns a continuous evaluation system into a comparison surface. The next layer is a dashboard that connects headline performance to the decision trace underneath.</p></div>
-          <figure className={styles.arenaFigure}><img src="/deepfund/arena.webp" alt="DeepFund Arena illustration comparing LLM fund managers as race cars" /><figcaption><span>EARLY ARENA METAPHOR</span><p>Car racing is illustrative only; the system performs research evaluation and does not execute real trades.</p></figcaption></figure>
+          <figure className={styles.arenaFigure}><img src={withBasePath("/deepfund/arena.webp")} alt="DeepFund Arena illustration comparing LLM fund managers as race cars" /><figcaption><span>EARLY ARENA METAPHOR</span><p>Car racing is illustrative only; the system performs research evaluation and does not execute real trades.</p></figcaption></figure>
         </div>
       </section>
 
@@ -183,7 +187,7 @@ export default function DeepFundCaseStudy() {
         <div><a href={paperUrl} target="_blank" rel="noreferrer">Read the paper ↗</a><a href={repositoryUrl} target="_blank" rel="noreferrer">View source ↗</a></div>
       </section>
 
-      <footer className={styles.footer}><a href="/">← Portfolio</a><span>DEEPFUND · 2025</span><a href="#top">Back to top ↑</a></footer>
+      <footer className={styles.footer}><a href={withBasePath("/")}>← Portfolio</a><span>DEEPFUND · 2025</span><a href="#top">Back to top ↑</a></footer>
     </main>
   );
 }

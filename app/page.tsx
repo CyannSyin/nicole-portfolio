@@ -16,6 +16,8 @@ const experiences = [
   },
 ];
 
+export const dynamic = "force-static";
+
 const projects = [
   {
     index: "01", title: "TRACE", category: "AI · CREATIVE TOOLS · PRODUCT",
@@ -49,13 +51,16 @@ const skills = [
   { title: "Research & craft", note: "Move between qualitative insight, quantitative evidence, prototypes, and clear product narratives.", items: ["User research", "Data analysis", "Prototyping", "Figma · Python · SQL"] },
 ];
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const withBasePath = (path: string) => `${basePath}${path}`;
+
 function Arrow() { return <span aria-hidden="true">↗</span>; }
 
 export default function Home() {
   return (
     <main>
       <header className="site-header shell">
-        <a className="wordmark" href="#top" aria-label="Nicole, back to top"><img src="/nicole-avatar.jpg?v=2" alt="" /></a>
+        <a className="wordmark" href="#top" aria-label="Nicole, back to top"><img src={withBasePath("/nicole-avatar.jpg?v=2")} alt="" /></a>
         <nav aria-label="Main navigation"><a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a></nav>
         <a className="availability" href="#contact"><span /> Available for conversations</a>
       </header>
@@ -98,9 +103,9 @@ export default function Home() {
             <article className="project" key={project.title}>
               <div className={`project-visual ${project.motif}`}>
                 <span className="project-number">{project.index}</span>
-                {project.motif === "trace" && <a className="project-visual-link" href="/work/trace" aria-label="View the TRACE case study"><span>VIEW CASE STUDY ↗</span></a>}
-                {project.motif === "promptpin" && <a className="project-visual-link" href="/work/promptpin" aria-label="View the PromptPin case study"><span>VIEW CASE STUDY ↗</span></a>}
-                {project.motif === "islecho" && <a className="project-visual-link" href="/work/islecho" aria-label="View the Islecho case study"><span>VIEW CASE STUDY ↗</span></a>}
+                {project.motif === "trace" && <a className="project-visual-link" href={withBasePath("/work/trace/")} aria-label="View the TRACE case study"><span>VIEW CASE STUDY ↗</span></a>}
+                {project.motif === "promptpin" && <a className="project-visual-link" href={withBasePath("/work/promptpin/")} aria-label="View the PromptPin case study"><span>VIEW CASE STUDY ↗</span></a>}
+                {project.motif === "islecho" && <a className="project-visual-link" href={withBasePath("/work/islecho/")} aria-label="View the Islecho case study"><span>VIEW CASE STUDY ↗</span></a>}
                 {project.motif === "trace" && <div className="trace-ui"><b>STORY MEMORY</b><i /><i /><i /><small>CONSISTENCY · 94%</small></div>}
                 {project.motif === "finance" && <div className="visual-card finance-ui"><div className="visual-label"><span>AI FOR FINANCE</span><span>FIG. 02</span></div><div className="finance-split"><div className="deepfund-mini"><span>01 / DEEPFUND</span><div className="mini-nodes"><i>A</i><i>B</i><i>C</i><i>D</i><i>E</i></div><b>LIVE MARKET</b></div><div className="fincost-mini"><span>02 / FINCOST</span><div className="mini-chart"><i /><i /><i /></div><b>ECONOMIC<br />VIABILITY</b></div></div><p>REAL-TIME PERFORMANCE → COST → DECISION</p></div>}
                 {project.motif === "promptpin" && <div className="prompt-ui"><span>PROMPT LIBRARY</span><div><small>RESEARCH</small><b>Summarize the user signal...</b></div><div><small>PRODUCT</small><b>Turn this insight into...</b></div><div><small>WRITING</small><b>Make the argument clearer...</b></div><i>⌘ P</i></div>}
@@ -108,7 +113,7 @@ export default function Home() {
               </div>
               <div className="project-meta"><p>{project.category}</p><span>{project.index} / 04</span></div>
               <h3>{project.title}</h3><p className="project-description">{project.description}</p><p className="outcome">↳ {project.outcome}</p>
-              {project.phases && <div className="project-phases">{project.phases.map((phase, phaseIndex) => <div key={phase.name}><span>0{phaseIndex + 1} / {phase.label}</span><h4>{phase.name}</h4><p>{phase.question}</p>{(phase.name === "DeepFund" || phase.name === "FinCost") && <a className="phase-case-link" href={phase.name === "DeepFund" ? "/work/deepfund" : "/work/fincost"}>View case ↗</a>}</div>)}</div>}
+              {project.phases && <div className="project-phases">{project.phases.map((phase, phaseIndex) => <div key={phase.name}><span>0{phaseIndex + 1} / {phase.label}</span><h4>{phase.name}</h4><p>{phase.question}</p>{(phase.name === "DeepFund" || phase.name === "FinCost") && <a className="phase-case-link" href={withBasePath(phase.name === "DeepFund" ? "/work/deepfund/" : "/work/fincost/")}>View case ↗</a>}</div>)}</div>}
               <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
             </article>
           ))}

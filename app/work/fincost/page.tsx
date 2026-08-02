@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import styles from "./fincost.module.css";
 
 const repositoryUrl = "https://github.com/CyannSyin/FinCost-ToolKit";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const withBasePath = (path: string) => `${basePath}${path}`;
 
 export const metadata: Metadata = {
   title: "FinCost — Nicole",
   description:
     "A cost-aware toolkit that measures the real operating cost of agentic trading systems and turns cost drivers into configuration-level recommendations.",
 };
+
+export const dynamic = "force-static";
 
 const costLayers = [
   {
@@ -44,7 +48,7 @@ export default function FinCostCaseStudy() {
   return (
     <main className={styles.page} id="top">
       <header className={styles.header}>
-        <a href="/">← Back to portfolio</a>
+        <a href={withBasePath("/")}>← Back to portfolio</a>
         <span>FINCOST · CASE STUDY</span>
         <a href={repositoryUrl} target="_blank" rel="noreferrer">View source ↗</a>
       </header>
@@ -100,8 +104,8 @@ export default function FinCostCaseStudy() {
       <section className={styles.section}>
         <div className={styles.sectionLabel}><span>02</span><p>THE TOOLKIT</p></div>
         <div className={styles.splitIntro}><h2>Measure first.<br />Optimize with <em>evidence.</em></h2><p>FinCost ingests runtime traces, trading results, model pricing, and system configuration. It calculates total cost, checks net viability, and generates configuration-level suggestions.</p></div>
-        <figure className={styles.overviewFigure}><img src="/fincost/overview.webp" alt="FinCost overview from unknown system cost and net loss to measured costs and net profit" /><figcaption><span>FIG. 02 / COST-AWARE TOOLKIT</span><p>The toolkit connects gross performance to complete system cost, then uses diagnosis and optimization to test whether the deployment is economically viable.</p></figcaption></figure>
-        <figure className={styles.frameworkFigure}><img src="/fincost/framework.webp" alt="FinCost framework from runtime trace and configuration through measurement, viability check, diagnosis, and optimization" /><figcaption><span>FIG. 03 / MEASURE → CHECK → OPTIMIZE</span><p>Runtime trace and trading results feed cost accounting; system configuration gives the optimizer controllable knobs for the next iteration.</p></figcaption></figure>
+        <figure className={styles.overviewFigure}><img src={withBasePath("/fincost/overview.webp")} alt="FinCost overview from unknown system cost and net loss to measured costs and net profit" /><figcaption><span>FIG. 02 / COST-AWARE TOOLKIT</span><p>The toolkit connects gross performance to complete system cost, then uses diagnosis and optimization to test whether the deployment is economically viable.</p></figcaption></figure>
+        <figure className={styles.frameworkFigure}><img src={withBasePath("/fincost/framework.webp")} alt="FinCost framework from runtime trace and configuration through measurement, viability check, diagnosis, and optimization" /><figcaption><span>FIG. 03 / MEASURE → CHECK → OPTIMIZE</span><p>Runtime trace and trading results feed cost accounting; system configuration gives the optimizer controllable knobs for the next iteration.</p></figcaption></figure>
       </section>
 
       <section className={styles.costSection}>
@@ -154,9 +158,9 @@ export default function FinCostCaseStudy() {
         <div className={styles.validationIntro}><h2>Test whether the advice<br />survives different <em>systems.</em></h2><p>The toolkit repository includes 13 retail deployment examples across model types, capital scales, frequencies, and single- or multi-agent architectures, with a five-expert judgment attached to each recommendation set.</p></div>
         <div className={styles.validationStats}><div><strong>13</strong><span>retail deployment examples</span></div><div><strong>5</strong><span>domain experts in the review panel</span></div><div><strong>4</strong><span>configuration levers evaluated</span></div></div>
         <div className={styles.deploymentGallery}>
-          <figure><img src="/fincost/deployment-01.webp" alt="FinCost deployment example for a daily single-agent retail system" /><figcaption>DAILY · SINGLE AGENT · COMMERCIAL API</figcaption></figure>
-          <figure><img src="/fincost/deployment-08.webp" alt="FinCost deployment example for an hourly multi-agent retail system" /><figcaption>HOURLY · MULTI-AGENT · HYBRID MODEL</figcaption></figure>
-          <figure><img src="/fincost/deployment-13.webp" alt="FinCost deployment example for a daily multi-agent retail system" /><figcaption>DAILY · MULTI-AGENT · COMMERCIAL API</figcaption></figure>
+          <figure><img src={withBasePath("/fincost/deployment-01.webp")} alt="FinCost deployment example for a daily single-agent retail system" /><figcaption>DAILY · SINGLE AGENT · COMMERCIAL API</figcaption></figure>
+          <figure><img src={withBasePath("/fincost/deployment-08.webp")} alt="FinCost deployment example for an hourly multi-agent retail system" /><figcaption>HOURLY · MULTI-AGENT · HYBRID MODEL</figcaption></figure>
+          <figure><img src={withBasePath("/fincost/deployment-13.webp")} alt="FinCost deployment example for a daily multi-agent retail system" /><figcaption>DAILY · MULTI-AGENT · COMMERCIAL API</figcaption></figure>
         </div>
         <p className={styles.validationNote}>These examples demonstrate applicability and actionability across configurations; they do not establish that FinCost guarantees profitable trading.</p>
       </section>
@@ -175,7 +179,7 @@ export default function FinCostCaseStudy() {
 
       <section className={styles.sourceCta}><span>OPEN-SOURCE COST-AWARE TOOLKIT</span><h2>FinCost</h2><p>Python · Runtime trace analysis · Cost accounting · Diagnosis agent</p><a href={repositoryUrl} target="_blank" rel="noreferrer">Explore the repository ↗</a></section>
 
-      <footer className={styles.footer}><a href="/">← Portfolio</a><span>FINCOST · 2026</span><a href="#top">Back to top ↑</a></footer>
+      <footer className={styles.footer}><a href={withBasePath("/")}>← Portfolio</a><span>FINCOST · 2026</span><a href="#top">Back to top ↑</a></footer>
     </main>
   );
 }
