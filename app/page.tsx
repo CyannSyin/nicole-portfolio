@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <main>
       <header className="site-header shell">
-        <a className="wordmark" href="#top" aria-label="Nicole, back to top">N<span>✦</span></a>
+        <a className="wordmark" href="#top" aria-label="Nicole, back to top"><img src="/nicole-avatar.jpg?v=2" alt="" /></a>
         <nav aria-label="Main navigation"><a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a></nav>
         <a className="availability" href="#contact"><span /> Available for conversations</a>
       </header>

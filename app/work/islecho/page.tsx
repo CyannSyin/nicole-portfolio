@@ -43,14 +43,6 @@ function PhoneFrame({ children, label }: { children: React.ReactNode; label: str
   );
 }
 
-function AssetPlaceholder({ label, filename, note }: { label: string; filename: string; note: string }) {
-  return (
-    <div className={styles.assetPlaceholder}>
-      <span>{label}</span><div>＋</div><p>{note}</p><code>public/islecho/{filename}</code>
-    </div>
-  );
-}
-
 export default function IslechoCaseStudy() {
   return (
     <main className={styles.page} id="top">
@@ -157,7 +149,19 @@ export default function IslechoCaseStudy() {
         <div className={styles.workflowGrid}>
           {loop.map((step) => <article key={step.number}><span>{step.number}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></article>)}
         </div>
-        <AssetPlaceholder label="FULL INTERACTION DEMO / ASSET PENDING" filename="islecho-demo.mp4" note="35–50 sec · vertical iPhone capture · welcome → write → drift → echo → return home" />
+        <figure className={styles.demoMedia}>
+          <div className={styles.demoCopy}>
+            <span>FIG. 02 / END-TO-END PROTOTYPE</span>
+            <h3>A complete emotional loop, shown at the pace of the product.</h3>
+            <p>The vertical capture follows the native experience from entering the archipelago to leaving a thought, drifting, and returning to a personal memory.</p>
+          </div>
+          <div className={styles.demoPhone}>
+            <video controls playsInline preload="metadata" poster="/islecho/welcome-home.png" aria-label="Islecho end-to-end iPhone prototype demonstration">
+              <source src="/islecho/islecho-demo.m4v?v=20260802-231456" type="video/mp4" />
+              Your browser does not support embedded video.
+            </video>
+          </div>
+        </figure>
       </section>
 
       <section className={styles.worldSection}>
@@ -188,11 +192,20 @@ export default function IslechoCaseStudy() {
 
       <section className={styles.section}>
         <div className={styles.sectionLabel}><span>07</span><p>PRODUCT GALLERY</p></div>
-        <div className={styles.galleryIntro}><h2>Show the atmosphere<br />in <em>motion.</em></h2><p>The repository artwork establishes the world. Final iPhone captures should show how typography, glass surfaces, transitions, and touch interactions bring it to life.</p></div>
+        <div className={styles.galleryIntro}><h2>Three moments.<br />One quiet <em>rhythm.</em></h2><p>The final iPhone captures connect the illustrated world to the daily product loop: arrive, leave something behind, then return to what the island remembers.</p></div>
         <div className={styles.galleryGrid}>
-          <AssetPlaceholder label="WELCOME + HOME SCREENS" filename="welcome-home.png" note="Two clean iPhone screens side by side · 1290×2796 screenshots preferred" />
-          <AssetPlaceholder label="WRITE + DRIFT SCREENS" filename="write-drift.png" note="Show mood selection, daily writing, and the ocean transition" />
-          <AssetPlaceholder label="ECHO + MEMORY SCREENS" filename="echo-memory.png" note="Show a received echo and the personal island memory archive" />
+          <figure className={styles.galleryCard}>
+            <div className={styles.galleryCanvas}><img src="/islecho/welcome-home.png" alt="Islecho welcome screen showing a lighthouse island at dusk" /></div>
+            <figcaption><span>01 / ARRIVE</span><p>Enter a calm product world before any social action is requested.</p></figcaption>
+          </figure>
+          <figure className={styles.galleryCard}>
+            <div className={styles.galleryCanvas}><img src="/islecho/write-drift.png" alt="Islecho daily writing screen with mood selection and a short thought" /></div>
+            <figcaption><span>02 / LEAVE A THOUGHT</span><p>Mood and a 200-character boundary make daily expression feel finite.</p></figcaption>
+          </figure>
+          <figure className={styles.galleryCard}>
+            <div className={styles.galleryCanvas}><img src="/islecho/echo-memory.png" alt="Islecho island memory screen with daily entries, moods, and echoes" /></div>
+            <figcaption><span>03 / REMEMBER</span><p>Entries and echoes settle into a private archive instead of a feed.</p></figcaption>
+          </figure>
         </div>
       </section>
 

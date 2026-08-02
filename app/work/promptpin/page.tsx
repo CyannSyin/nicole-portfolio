@@ -83,17 +83,6 @@ function ManagerMockup() {
   );
 }
 
-function AssetPlaceholder({ label, filename, note }: { label: string; filename: string; note: string }) {
-  return (
-    <div className={styles.assetPlaceholder}>
-      <span>{label}</span>
-      <div>＋</div>
-      <p>{note}</p>
-      <code>public/promptpin/{filename}</code>
-    </div>
-  );
-}
-
 export default function PromptPinCaseStudy() {
   return (
     <main className={styles.page} id="top">
@@ -177,7 +166,15 @@ export default function PromptPinCaseStudy() {
         <div className={styles.workflowGrid}>
           {workflow.map((step) => <article key={step.number}><span>{step.number}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></article>)}
         </div>
-        <AssetPlaceholder label="DEMO VIDEO / ASSET PENDING" filename="promptpin-demo.mp4" note="20–35 sec · 16:9 · menu bar → project → prompt → copy → paste" />
+        <figure className={styles.demoMedia}>
+          <div className={styles.demoFrame}>
+            <video controls playsInline preload="metadata" poster="/promptpin/manage-window.png">
+              <source src="/promptpin/promptpin-demo.mp4" type="video/mp4" />
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <figcaption><span>FIG. 03 / PRODUCT WALKTHROUGH</span><p>From opening PromptPin to selecting a project and bringing a reusable prompt back into the workflow.</p></figcaption>
+        </figure>
       </section>
 
       <section className={styles.systemSection}>
@@ -202,10 +199,20 @@ export default function PromptPinCaseStudy() {
 
       <section className={styles.section}>
         <div className={styles.sectionLabel}><span>06</span><p>PRODUCT GALLERY</p></div>
-        <div className={styles.galleryIntro}><h2>Show the product<br />in its natural <em>habitat.</em></h2><p>Clean macOS screenshots will make the native interaction and compact scale easier to understand than additional diagrams.</p></div>
+        <div className={styles.galleryIntro}><h2>The same system,<br />at two <em>scales.</em></h2><p>A compact menu-bar surface for quick retrieval, paired with a larger workspace for maintaining project structure.</p></div>
         <div className={styles.galleryGrid}>
-          <AssetPlaceholder label="MENU BAR SCREENSHOT" filename="menu-bar.png" note="Show project search and the open prompt list · 1600×1000 or larger" />
-          <AssetPlaceholder label="MANAGE WINDOW SCREENSHOT" filename="manage-window.png" note="Show projects, ordered prompts, and prompt actions · 1600×1000 or larger" />
+          <figure className={`${styles.galleryCard} ${styles.galleryPortrait}`}>
+            <div className={styles.galleryCanvas}>
+              <img src="/promptpin/menu-bar.png" alt="PromptPin menu bar popover listing three prompt projects" />
+            </div>
+            <figcaption><span>01 / QUICK ACCESS</span><p>Prompt projects remain one click away without taking over the desktop.</p></figcaption>
+          </figure>
+          <figure className={`${styles.galleryCard} ${styles.galleryLandscape}`}>
+            <div className={styles.galleryCanvas}>
+              <img src="/promptpin/manage-window.png" alt="PromptPin settings window showing projects and an ordered prompt" />
+            </div>
+            <figcaption><span>02 / MANAGE</span><p>The full workspace separates deliberate prompt setup from everyday retrieval.</p></figcaption>
+          </figure>
         </div>
       </section>
 
